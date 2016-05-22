@@ -1,0 +1,1 @@
+F:\Enkomplete\Geofence_UWP\Geofence_UWP\Geofence_UWP.csproj;x86

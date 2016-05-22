@@ -1,0 +1,92 @@
+﻿<Page
+    x:Class="Geofence_UWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Geofence_UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/SplitViewStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Page.Resources>
+
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowStates">
+
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+
+                        <Setter Target="ShellSplitView.CompactPaneLength" Value="240" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="DesktopState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+
+                        <Setter Target="ShellSplitView.CompactPaneLength" Value="48" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+
+                        <Setter Target="ShellSplitView.CompactPaneLength" Value="0" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="550*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Background="#ff6600" x:Name="Header_Grid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="80*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="&#xE8FD;" Foreground="White" x:Name="MenuButton" Click="MenuButton_Click" FontFamily="Segoe MDL2 Assets"  HorizontalAlignment="Center"  Background="{x:Null}" Padding="15,4"  />
+            <TextBlock x:Name="TitletextBlock"  Grid.Column="1" Foreground="White" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Teleport Offers" VerticalAlignment="Center"/>
+        </Grid>
+        
+        <Grid x:Name="Menu_Grid" Grid.Row="1" Grid.RowSpan="2">
+            <SplitView   OpenPaneLength="240" x:Name="ShellSplitView"
+    			CompactPaneLength="0" DisplayMode="CompactOverlay"
+    			IsPaneOpen="False" PaneBackground="#ff6600" Grid.ColumnSpan="3" >
+                <SplitView.Pane>
+                    <StackPanel x:Name="RadioButtonContainer">
+
+                        <!--<RadioButton Tag="" Checked="BackRadioButton_Checked" Style="{StaticResource NavButtonStyle}" Background="SteelBlue" />-->
+                        <RadioButton x:Name="Home" Tag="&#xE80F;" Foreground="White" Content="Home" GroupName="Nav" Style="{StaticResource NavButtonStyle}" Click="Home_Click" />
+                        <RadioButton x:Name="Deals" Tag="&#xE7C5;" Foreground="White"  CommandParameter="DetailPage" Content="Deals" GroupName="Nav" Style="{StaticResource NavButtonStyle}" Click="Deals_Click" />
+                        <RadioButton x:Name="NearBy" Tag="&#xE72D;" Foreground="White"  Content="Near By" GroupName="Nav" Style="{StaticResource NavButtonStyle}" Click="NearBy_Click" />
+                        <RadioButton x:Name="Share" Tag="&#xE72D;" Foreground="White"  Content="Share" GroupName="Nav" Style="{StaticResource NavButtonStyle}" Click="Share_Click" />
+                        <RadioButton x:Name="About" Tag="&#xE783;" Foreground="White"  Content="About" GroupName="Nav" Style="{StaticResource NavButtonStyle}" Click="About_Click" />
+                        <RadioButton x:Name="Rate" Tag="&#59189;" Foreground="White"  Content="Rate and Review" GroupName="Nav" Style="{StaticResource NavButtonStyle}" Click="Rate_Click" />
+
+                    </StackPanel>
+                </SplitView.Pane>
+            </SplitView>
+        </Grid>
+    </Grid>
+</Page>
